@@ -1,36 +1,111 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Knowbase – AI-Powered Internal Knowledge Assistant
+
+Knowbase is an AI-powered internal knowledge assistant that helps employees find information from company documents through natural language questions.
+
+The application combines a Next.js frontend with a FastAPI backend powered by Retrieval-Augmented Generation (RAG) and hybrid search.
+
+## Features
+
+- **AI-powered chat:** Ask questions about company knowledge using natural language.
+- **Knowledge base:** View and manage uploaded company documents.
+- **Document uploads:** Upload PDF, DOCX, and TXT files.
+- **Source references:** View the documents and text chunks used to generate answers.
+- **Document preview:** Open referenced documents directly from chat responses.
+- **Chat interface:** Interact with the knowledge assistant through a clean dashboard.
+- **API integration:** Communicate with the FastAPI backend.
+- **Responsive design:** Access the application across desktop and mobile screens.
+
+## Tech Stack
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- FastAPI (backend integration)
+
+## Project Structure
+
+```text
+knowbase-frontend/
+├── public/
+├── src/
+│   ├── app/
+│   ├── components/
+│   └── lib/
+├── .env.example
+├── .gitignore
+├── package.json
+└── README.md
+```
+
+*Note: The structure above is a simplified overview.*
 
 ## Getting Started
 
-First, run the development server:
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/nicojoy-gif/hybrid-rag-frontend
+cd hybrid-rag-frontend
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Configure environment variables
+
+Create a `.env.local` file in the project root:
+
+```env
+NEXT_PUBLIC_API_URL=http://127.0.0.1:8000
+```
+
+This points the frontend to the local FastAPI backend.
+
+### 4. Start the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Backend Integration
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The frontend communicates with the Knowbase FastAPI backend.
 
-## Learn More
+Backend repository: **<your-backend-repository-url>**
 
-To learn more about Next.js, take a look at the following resources:
+The backend provides endpoints for:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Asking questions.
+- Uploading documents.
+- Retrieving knowledge base documents.
+- Opening source documents.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Ensure the backend and Ollama are running before using the application.
 
-## Deploy on Vercel
+## Application Workflow
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Upload company documents through the Knowledge Base.
+2. The backend extracts and processes the document content.
+3. The RAG pipeline generates embeddings and indexes document chunks.
+4. Ask questions through the chat interface.
+5. The backend retrieves relevant context using hybrid search.
+6. The language model generates an answer based on the retrieved information.
+7. Relevant document references are displayed alongside the answer.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Future Improvements
+
+- Chat history persistence.
+- User authentication and access control.
+- Improved document search and filtering.
+- Production deployment.
+- Enhanced AI response evaluation.
+
+## Author
+
+Built as a practical AI Engineering project exploring RAG, hybrid retrieval, embeddings, and local language models.
